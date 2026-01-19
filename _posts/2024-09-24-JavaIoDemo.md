@@ -81,6 +81,18 @@ tags:
 * `sendfile`：适合大文件传输
   * 不经过用户态，直接在内核空间拷贝，减少一次上下文切换
 
+### 同步异步
+
+两者描述的维度是不一样的，可以互相组合
+
+* `NIO`和`BIO`是`IO`模型，读取数据时，是否阻塞内核线程【操作系统层面】
+* 同步异步是描述`api`语义【接口层面】
+
+|      | NIO                | BIO                               |
+| ---- | ------------------ | --------------------------------- |
+| 同步 | `Tomcat websocket` | 正常读写`socket`【早期 `Tomcat`】 |
+| 异步 | `Netty`            | 几乎不存在                        |
+
 ## Netty
 
 https://dongzl.github.io/netty-handbook/#/_content/chapter05?id=_58-netty-%e6%a8%a1%e5%9e%8b
